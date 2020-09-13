@@ -16,11 +16,11 @@ bibliography: paper.bib
 ---
 
 # Summary
-We discuss the problem of updating immutable objects. The solutions presented are implemented in the Setfield.jl [@SetfieldPackage].
+We discuss the problem of updating immutable objects. The solutions presented are implemented in the Setfield.jl package [@SetfieldPackage].
 
 # Details
 
-In Julia, some objects are *mutable* (`Array`, `mutable struct`, `...`), while others are *immutable* (`Tuple`, `struct`, `...`).
+In the Julia programming language [@Julia-2017], some objects are *mutable* (`Array`, `mutable struct`, `...`), while others are *immutable* (`Tuple`, `struct`, `...`).
 Neither is strictly better than the other in every situation. However, *immutability* usually leads to code that is easier to reason about, for both humans and compilers.
 And therefore less buggy and more performant programs.
 One convenience with mutability is, that it makes updating objects very simple:
@@ -30,7 +30,7 @@ One convenience with mutability is, that it makes updating objects very simple:
 The analogous operation in the immutable case is to create a copy of `spaceship`,
 with just the captains name changed to "Julia". This operation is sometimtes called functional update.
 Just think for a moment, how would you do achieve this?
-It is a serious problem and there are various approaches, for instance https://github.com/JuliaLang/julia/pull/21912.
+It is a non trivial problem and there are many approaches. For instance [@JuliaPR21912; @MutabilitiesPackage]
 
 The [`Setfield.jl`](https://github.com/jw3126/Setfield.jl) provides a solution to this problem. Namely it allows the user
 to specify a functional update using the same syntax as in a mutable setting. The only syntactic difference is the `@set` macro in front:
