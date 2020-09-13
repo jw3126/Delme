@@ -30,22 +30,15 @@ One convenience with mutability is, that it makes updating objects very simple:
 The analogous operation in the immutable case is to create a copy of `spaceship`,
 with just the captains name changed to "Julia". This operation is sometimtes called functional update.
 Just think for a moment, how would you do achieve this?
-It is a non trivial problem and there are many approaches. For instance [@JuliaPR21912; @MutabilitiesPackage]
+It is a non trivial problem and there are many approaches. Both in Julia [@JuliaPR21912; @MutabilitiesPackage] and other languages [@HaskellLens; @ImmutableJS].
 
-The [`Setfield.jl`](https://github.com/jw3126/Setfield.jl) provides a solution to this problem. Namely it allows the user
+The `Setfield.jl` package provides one solution to this problem. Namely it allows the user
 to specify a functional update using the same syntax as in a mutable setting. The only syntactic difference is the `@set` macro in front:
 
 `@set spaceship.captain.name = "Julia"`
 
 And voila, this returns an updated copy. The implementation is based on the lens formalism.
 Lenses are a powerful tool for manipulating immutable data, popular in the haskell community.
-
-# Details
-
-For a quick reference, the following citation commands can be used:
-- `@author:2001`  ->  "Author et al. (2001)"
-- `[@author:2001]` -> "(Author et al., 2001)"
-- `[@author1:2001; @author2:2001]` -> "(Author1 et al., 2001; Author2 et al., 2002)"
 
 # Acknowledgements
 
