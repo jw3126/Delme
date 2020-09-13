@@ -16,7 +16,7 @@ bibliography: paper.bib
 ---
 
 # Summary
-We discuss the problem of updating immutable objects. The solutions presented are implemented in the @fidgit `@SetfieldRepo` package.
+We discuss the problem of updating immutable objects. The solutions presented are implemented in the @astropy `@SetfieldRepo` package.
 
 # Details
 
