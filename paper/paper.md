@@ -9,7 +9,7 @@ authors:
     orcid: 0000-0002-0980-8239
     affiliation: 1
 affiliations:
- - name: [PTW-Dosimetry](https://www.ptwdosimetry.com)
+ - name: PTW-Dosimetry
    index: 1
 date: 13 September 2020
 bibliography: paper.bib
