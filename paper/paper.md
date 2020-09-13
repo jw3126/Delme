@@ -1,14 +1,12 @@
 ---
 title: 'Gala: A Python package for galactic dynamics'
 tags:
-  - Python
-  - astronomy
-  - dynamics
-  - galactic dynamics
-  - milky way
+  - Julia
+  - Optics
+  - Immutable
 authors:
-  - name: Adrian M. Price-Whelan^[Custom footnotes for e.g. denoting who the corresponding author is can be included like this.]
-    orcid: 0000-0003-0872-7098
+  - name: Jan Weidner
+    orcid: 0000-0002-0980-8239
     affiliation: "1, 2" # (Multiple affiliations must be quoted)
   - name: Author Without ORCID
     affiliation: 2
@@ -21,7 +19,7 @@ affiliations:
    index: 2
  - name: Independent Researcher
    index: 3
-date: 13 August 2017
+date: 13 September 2020
 bibliography: paper.bib
 
 # Optional fields if submitting to a AAS journal too, see this blog post:
@@ -31,38 +29,30 @@ aas-journal: Astrophysical Journal <- The name of the AAS journal.
 ---
 
 # Summary
+We discuss the problem of updating immutable objects. The solutions presented are implemented in the [`Setfield.jl`](https://github.com/jw3126/Setfield.jl) package.
 
-The forces on stars, galaxies, and dark matter under external gravitational
-fields lead to the dynamical evolution of structures in the universe. The orbits
-of these bodies are therefore key to understanding the formation, history, and
-future state of galaxies. The field of "galactic dynamics," which aims to model
-the gravitating components of galaxies to study their structure and evolution,
-is now well-established, commonly taught, and frequently used in astronomy.
-Aside from toy problems and demonstrations, the majority of problems require
-efficient numerical tools, many of which require the same base code (e.g., for
-performing numerical orbit integration).
+# Introduction
 
-# Statement of need
+In Julia, some objects are *mutable* (`Array`, `mutable struct`, `...`), while others are *immutable* (`Tuple`, `struct`, `...`).
+Neither is strictly better than the other in every situation. However, *immutability* usually leads to code that is easier to reason about, for both humans and compilers.
+And therefore less buggy and more performant programs.
+One convenience with mutability is, that it makes updating objects very simple:
 
-`Gala` is an Astropy-affiliated Python package for galactic dynamics. Python
-enables wrapping low-level languages (e.g., C) for speed without losing
-flexibility or ease-of-use in the user-interface. The API for `Gala` was
-designed to provide a class-based and user-friendly interface to fast (C or
-Cython-optimized) implementations of common operations such as gravitational
-potential and force evaluation, orbit integration, dynamical transformations,
-and chaos indicators for nonlinear dynamics. `Gala` also relies heavily on and
-interfaces well with the implementations of physical units and astronomical
-coordinate systems in the `Astropy` package [@astropy] (`astropy.units` and
-`astropy.coordinates`).
+`spaceship.captain.name = "Julia"`
 
-`Gala` was designed to be used by both astronomical researchers and by
-students in courses on gravitational dynamics or astronomy. It has already been
-used in a number of scientific publications [@Pearson:2017] and has also been
-used in graduate courses on Galactic dynamics to, e.g., provide interactive
-visualizations of textbook material [@Binney:2008]. The combination of speed,
-design, and support for Astropy functionality in `Gala` will enable exciting
-scientific explorations of forthcoming data releases from the *Gaia* mission
-[@gaia] by students and experts alike.
+The analogous operation in the immutable case is to create a copy of `spaceship`,
+with just the captains name changed to "Julia". This operation is sometimtes called functional update.
+Just think for a moment, how would you do achieve this?
+It is a serious problem and there are various approaches, for instance https://github.com/JuliaLang/julia/pull/21912.
+
+The [`Setfield.jl`](https://github.com/jw3126/Setfield.jl) provides a solution to this problem. Namely it allows the user
+to specify a functional update using the same syntax as in a mutable setting. The only syntactic difference is the `@set` macro in front:
+
+`@set spaceship.captain.name = "Julia"`
+
+And voila, this returns an updated copy.
+
+# Details
 
 For a quick reference, the following citation commands can be used:
 - `@author:2001`  ->  "Author et al. (2001)"
