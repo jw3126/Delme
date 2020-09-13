@@ -16,7 +16,7 @@ bibliography: paper.bib
 ---
 
 # Summary
-We discuss the problem of updating immutable objects. The solutions presented are implemented in the [`Setfield.jl`](https://github.com/jw3126/Setfield.jl) @SetfieldRepo package.
+We discuss the problem of updating immutable objects. The solutions presented are implemented in the `@SetfieldRepo` package.
 
 # Details
 
