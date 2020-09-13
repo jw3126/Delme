@@ -38,7 +38,7 @@ to specify a functional update using the same syntax as in a mutable setting. Th
 `@set spaceship.captain.name = "Julia"`
 
 And voila, this returns an updated copy. The implementation is based on the lens formalism.
-See the introduction of [@AlgebrasAndUpdateStrategies] for some history of lenses.
+See the introduction of [@AlgebrasAndUpdateStrategies] for an entry point to the vast lens literature.
 
 # Acknowledgements
 
