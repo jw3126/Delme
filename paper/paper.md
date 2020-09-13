@@ -1,5 +1,5 @@
 ---
-title: 'Gala: A Python package for galactic dynamics'
+title: 'Setfield.jl: Changing the immutable'
 tags:
   - Julia
   - Functional Programming
@@ -38,11 +38,11 @@ to specify a functional update using the same syntax as in a mutable setting. Th
 `@set spaceship.captain.name = "Julia"`
 
 And voila, this returns an updated copy. The implementation is based on the lens formalism.
-Lenses are a powerful tool for manipulating immutable data, popular in the haskell community.
+See the introduction of [@AlgebrasAndUpdateStrategies] for some history of lenses.
 
 # Acknowledgements
 
 We acknowledge various small contributions in form of issues and pull requests, by various
-authors. Details can be extracted from the [`github repository`](https://github.com/jw3126/Setfield.jl).
+authors. I am very grateful to Takafumi Arakaki, who made many outstanding contributions to the package. Details can be extracted from the [`github repository`](https://github.com/jw3126/Setfield.jl).
 
 # References
