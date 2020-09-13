@@ -7,7 +7,7 @@ tags:
 authors:
   - name: Jan Weidner
     orcid: 0000-0002-0980-8239
-    affiliation: "1"
+    affiliation: 1
 affiliations:
  - name: [PTW-Dosimetry](https://www.ptwdosimetry.com)
    index: 1
