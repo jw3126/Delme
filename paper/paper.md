@@ -7,31 +7,22 @@ tags:
 authors:
   - name: Jan Weidner
     orcid: 0000-0002-0980-8239
-    affiliation: "1, 2" # (Multiple affiliations must be quoted)
+    affiliation: "1"
   - name: Author Without ORCID
     affiliation: 2
   - name: Author with no affiliation
     affiliation: 3
 affiliations:
- - name: Lyman Spitzer, Jr. Fellow, Princeton University
+ - name: [PTW-Dosimetry](https://www.ptwdosimetry.com)
    index: 1
- - name: Institution Name
-   index: 2
- - name: Independent Researcher
-   index: 3
 date: 13 September 2020
 bibliography: paper.bib
-
-# Optional fields if submitting to a AAS journal too, see this blog post:
-# https://blog.joss.theoj.org/2018/12/a-new-collaboration-with-aas-publishing
-aas-doi: 10.3847/xxxxx <- update this with the DOI from AAS once you know it.
-aas-journal: Astrophysical Journal <- The name of the AAS journal.
 ---
 
 # Summary
-We discuss the problem of updating immutable objects. The solutions presented are implemented in the [`Setfield.jl`](https://github.com/jw3126/Setfield.jl) package.
+We discuss the problem of updating immutable objects. The solutions presented are implemented in the [`Setfield.jl`](https://github.com/jw3126/Setfield.jl) @SetfieldRepo package.
 
-# Introduction
+# Details
 
 In Julia, some objects are *mutable* (`Array`, `mutable struct`, `...`), while others are *immutable* (`Tuple`, `struct`, `...`).
 Neither is strictly better than the other in every situation. However, *immutability* usually leads to code that is easier to reason about, for both humans and compilers.
@@ -50,7 +41,8 @@ to specify a functional update using the same syntax as in a mutable setting. Th
 
 `@set spaceship.captain.name = "Julia"`
 
-And voila, this returns an updated copy.
+And voila, this returns an updated copy. The implementation is based on the lens formalism.
+Lenses are a powerful tool for manipulating immutable data, popular in the haskell community.
 
 # Details
 
@@ -61,7 +53,7 @@ For a quick reference, the following citation commands can be used:
 
 # Acknowledgements
 
-We acknowledge contributions from Brigitta Sipocz, Syrtis Major, and Semyeong
-Oh, and support from Kathryn Johnston during the genesis of this project.
+We acknowledge various small contributions in form of issues and pull requests, by various
+authors. Details can be extracted from the [`github repository`](https://github.com/jw3126/Setfield.jl).
 
 # References
