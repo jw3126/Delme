@@ -1,10 +1,12 @@
 name: Comment on Merged PR
 
+# on:
+#   pull_request:
+#     types:
+#       - closed
 on:
   pull_request:
-    types:
-      # - closed
-      - synchronize
+    branches: [ main ]
 
 jobs:
   comment:
@@ -15,8 +17,6 @@ jobs:
 
       - name: Set up Julia
         uses: julia-actions/setup-julia@v1
-        with:
-          version: '1.6'
 
       - name: Run Julia script
         id: julia_script
