@@ -9,19 +9,15 @@ jobs:
   comment:
     runs-on: ubuntu-latest
     steps:
-      - name: Comment on PR
-        if: github.event.pull_request.merged == true
-        uses: actions/github-script@v5
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Julia
+        uses: julia-actions/setup-julia@v1
         with:
-          github-token: ${{secrets.GITHUB_TOKEN}}
-          script: |
-            const issue_number = context.issue.number;
-            const owner = context.repo.owner;
-            const repo = context.repo.repo;
-            const pr_author = context.payload.pull_request.user.login;
-            await github.rest.issues.createComment({
-              owner: owner,
-              repo: repo,
-              issue_number: issue_number,
-              body: `@${pr_author}, This PR was successfully merged!`
-            });
+          version: '1.6'
+
+      - name: Run Julia script
+        id: julia_script
+        run: |
+          julia script.jl
