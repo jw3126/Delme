@@ -25,7 +25,7 @@ jobs:
         id: julia_script
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          github_pull_request_number: ${{ github.pull_request.number}}
+          github_event_pull_request_number: ${{ github.event.pull_request.number}}
           github_repository: ${{ github.repository}}
         run: |
           julia script.jl
