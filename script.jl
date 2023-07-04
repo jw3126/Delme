@@ -1,5 +1,5 @@
 using Pkg
 Pkg.add("GitHub")
-@show ENV["PR_NUMBER"]
-@show ENV["REPO_NAME"]
-@show ENV["REPO_OWNER"]
+@show ENV["github_pull_request_number"]
+@show ENV["github_repository"]
+@show ENV["github_repository_owner"]
