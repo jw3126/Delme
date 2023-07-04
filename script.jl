@@ -5,6 +5,7 @@ import GitHub
 GITHUB_TOKEN = ENV["GITHUB_TOKEN"]
 pr_number = parse(Int, ENV["github_event_pull_request_number"])
 repo = GitHub.Repo(ENV["github_repository"])
+pr_author = ENV["github_event_pull_request_author"]
 @show repo
 
 auth = GitHub.authenticate(GITHUB_TOKEN)
@@ -18,6 +19,6 @@ issue = GitHub.create_issue(repo; params=Dict(
 
 pr_comment = GitHub.create_comment(repo, pr_number; auth,
     params=Dict(
-        "body"=>"This PR broke DAT. See #$(issue.number)",
+        "body"=>"@$pr_author this PR broke DAT. See #$(issue.number)",
     )
 )
