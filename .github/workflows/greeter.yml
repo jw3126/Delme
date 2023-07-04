@@ -27,20 +27,21 @@ jobs:
           julia script.jl
           echo "::set-output name=exit_code::$?"
 
-      - name: Comment on PR
-        uses: actions/github-script@v5
-        with:
-          github-token: ${{secrets.GITHUB_TOKEN}}
-          script: |
-            const issue_number = context.issue.number;
-            const owner = context.repo.owner;
-            const repo = context.repo.repo;
-            const pr_author = context.payload.pull_request.user.login;
-            const exit_code = steps.julia_script.outputs.exit_code;
-            const message = exit_code == 0 ? 'pass' : 'fail';
-            await github.rest.issues.createComment({
-              owner: owner,
-              repo: repo,
-              issue_number: issue_number,
-              body: `@${pr_author}, The Julia script result: ${message}`
-            });
+      # - name: Comment on PR
+      #   uses: actions/github-script@v5
+      #   with:
+      #     github-token: ${{secrets.GITHUB_TOKEN}}
+      #     script: |
+      #       const issue_number = context.issue.number;
+      #       const owner = context.repo.owner;
+      #       const repo = context.repo.repo;
+      #       const pr_author = context.payload.pull_request.user.login;
+      #       const exit_code = steps.julia_script.outputs.exit_code;
+      #       const message = exit_code == 0 ? 'pass' : 'fail';
+      #       await github.rest.issues.createComment({
+      #         owner: owner,
+      #         repo: repo,
+      #         issue_number: issue_number,
+      #         body: `@${pr_author}, The Julia script result: ${message}`
+      #       });
+
