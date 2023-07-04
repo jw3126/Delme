@@ -3,10 +3,9 @@ Pkg.add("GitHub")
 import GitHub
 
 GITHUB_TOKEN = ENV["GITHUB_TOKEN"]
-pr_number = parse(Int, ENV["github_event_pull_request_number"])
-repo = GitHub.Repo(ENV["github_repository"])
-pr_author = ENV["github_event_pull_request_user_login"]
-@show repo
+pr_number = parse(Int, ENV["PR_NUMBER"])
+repo = GitHub.Repo(ENV["REPO"])
+pr_author = ENV["PR_AUTHOR"]
 
 auth = GitHub.authenticate(GITHUB_TOKEN)
 
