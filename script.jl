@@ -3,7 +3,7 @@ Pkg.add("GitHub")
 import GitHub
 
 GITHUB_TOKEN = ENV["GITHUB_TOKEN"]
-@show ENV["github_pull_request_number"]
+@show ENV["github_event_pull_request_number"]
 repo = GitHub.Repo(ENV["github_repository"])
 @show repo
 
