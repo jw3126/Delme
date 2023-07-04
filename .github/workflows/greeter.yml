@@ -27,7 +27,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           github_pull_request_number: ${{ github.pull_request.number}}
           github_repository: ${{ github.repository}}
-          REPO_OWNER: ${{ github.repository_owner}}
+          github_repository_owner: ${{ github.repository_owner}}
         run: |
           julia script.jl
           echo "::set-output name=exit_code::$?"
