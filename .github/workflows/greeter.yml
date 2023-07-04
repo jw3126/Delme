@@ -3,7 +3,8 @@ name: Comment on Merged PR
 on:
   pull_request:
     types:
-      - closed
+      # - closed
+      - synchronize
 
 jobs:
   comment:
