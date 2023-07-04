@@ -3,21 +3,21 @@ Pkg.add("GitHub")
 import GitHub
 
 GITHUB_TOKEN = ENV["GITHUB_TOKEN"]
-@show ENV["github_event_pull_request_number"]
+pr_number = parse(Int, ENV["github_event_pull_request_number"])
 repo = GitHub.Repo(ENV["github_repository"])
 @show repo
 
 auth = GitHub.authenticate(GITHUB_TOKEN)
 
-res_create_issue = GitHub.create_issue(repo; params=Dict(
-    "title"=>"hello",
-    "body"=>"world",
+issue = GitHub.create_issue(repo; params=Dict(
+    "title"=>"DAT failure",
+    "body"=>"#$pr_number broke DAT",
     ),
     auth
 )
 
-res_comment = GitHub.create_comment(repo, res_create_issue.number; auth,
+pr_comment = GitHub.create_comment(repo, pr_number; auth,
     params=Dict(
-        "body"=>"hello",
+        "body"=>"This PR broke DAT. See #$(issue.number)",
     )
 )
