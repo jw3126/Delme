@@ -25,9 +25,9 @@ jobs:
         id: julia_script
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          github_event_pull_request_number: ${{ github.event.pull_request.number}}
-          gitbub_event_pull_request_user_login: ${{ github.event.pull_request.user.login }}
-          github_repository: ${{ github.repository}}
+          PR_NUMBER: ${{ github.event.pull_request.number}}
+          PR_AUTHOR: ${{ github.event.pull_request.user.login }}
+          REPO: ${{ github.repository}}
         run: |
           julia script.jl
           echo "::set-output name=exit_code::$?"
