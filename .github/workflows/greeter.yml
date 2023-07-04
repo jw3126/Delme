@@ -1,10 +1,12 @@
 name: Comment on Merged PR
 
+# on:
+#   pull_request:
+#     types:
+#       - closed
 on:
   pull_request:
-    types:
-      # - closed
-      - synchronize
+    branches: [ main ]
 
 jobs:
   comment:
